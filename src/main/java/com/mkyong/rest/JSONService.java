@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.mkyong.Track;
+import javax.ws.rs.FormParam;
 
 @Path("/json/metallica")
 public class JSONService {
@@ -34,6 +35,15 @@ public class JSONService {
 		String result = "Track saved : " + track;
 		return Response.status(201).entity(result).build();
 		
+	}
+        
+        
+        @POST
+	@Path("/posting")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response createCompany(@FormParam(value = "companystr") String companystr) {
+		String result = "Track saved : " + companystr;
+		return Response.status(201).entity(result).build();
 	}
 	
 }

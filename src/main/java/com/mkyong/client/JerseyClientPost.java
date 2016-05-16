@@ -16,9 +16,13 @@ public class JerseyClientPost {
 					.resource("http://localhost:8080/RESTfulExample/rest/json/metallica/post");
 
 			String input = "{\"singer\":\"Metallica\",\"title\":\"Fade To Black\"}";
+                        //String input = "hello";
+                       //  String jsonstr = "{param1=\"hello\",param2=\"hello2\"}";
+                       // client.create(jsonstr);
 
 			ClientResponse response = webResource.type("application/json")
 					.post(ClientResponse.class, input);
+                        System.out.println("---response.getStatus()----"+response.getStatus());
 
 			if (response.getStatus() != 201) {
 				throw new RuntimeException("Failed : HTTP error code : "
