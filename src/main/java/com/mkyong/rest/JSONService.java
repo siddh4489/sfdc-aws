@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response;
 
 import com.mkyong.Track;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.HeaderParam;
 
 @Path("/json/metallica")
 public class JSONService {
@@ -41,8 +42,8 @@ public class JSONService {
         @POST
 	@Path("/posting")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createCompany(@FormParam(value = "companystr") String companystr) {
-		String result = "Track saved : " + companystr;
+	public Response createCompany(@HeaderParam("cmpstr") String cmpstr) {
+		String result = "Data saved : " + cmpstr;
 		return Response.status(201).entity(result).build();
 	}
 	
