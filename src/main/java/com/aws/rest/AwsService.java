@@ -28,4 +28,11 @@ public class AwsService {
         return Response.status(201).entity(CompanyManager.insertCompanyManager(cmpstr)).build();
     }
 
+    @POST
+    @Path("/test")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response test(@HeaderParam("cmpstr") String cmpstr) throws ParseException {
+        return Response.status(201).entity(CompanyManager.insertCompanyManager(cmpstr)).build();
+    }
+
 }

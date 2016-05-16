@@ -14,8 +14,8 @@ public class CompanyModel {
     public String url;
     public String submittedby;
     public String privateorpublic;
-    public int ftes;
-    public int capitalraised;
+    public String ftes;
+    public String capitalraised;
     public String country;
     public String city;
     public String name;
@@ -47,21 +47,24 @@ public class CompanyModel {
         this.privateorpublic = privateorpublic;
     }
 
-    public int getFtes() {
+    public String getFtes() {
         return ftes;
     }
 
-    public void setFtes(int ftes) {
+    public void setFtes(String ftes) {
         this.ftes = ftes;
     }
 
-    public int getCapitalraised() {
+    public String getCapitalraised() {
         return capitalraised;
     }
 
-    public void setCapitalraised(int capitalraised) {
+    public void setCapitalraised(String capitalraised) {
         this.capitalraised = capitalraised;
     }
+
+
+
 
     public String getCountry() {
         return country;
