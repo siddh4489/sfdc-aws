@@ -5,12 +5,14 @@
  */
 package com.aws.rest;
 
+import com.aws.manager.CompanyManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -22,9 +24,8 @@ public class AwsService {
     @POST
     @Path("/company")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createCompany(@HeaderParam("cmpstr") String cmpstr) {
-        String result = "Data saved : " + cmpstr;
-        return Response.status(201).entity(result).build();
+    public Response createCompany(@HeaderParam("cmpstr") String cmpstr) throws ParseException {
+        return Response.status(201).entity(CompanyManager.insertCompanyManager(cmpstr)).build();
     }
 
 }
