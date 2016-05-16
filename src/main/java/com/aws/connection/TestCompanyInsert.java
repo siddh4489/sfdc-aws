@@ -15,7 +15,7 @@ import org.json.simple.parser.ParseException;
 public class TestCompanyInsert {
 
     public static void main(String[] args) throws ParseException {
-        String jsonStr =  "{ \"url\" : \"www.test.com\", \"submittedby\" : \"test\", \"privateorpublic\" : \"test\", \"ftes\" : \"3\", \"capitalraised\" : \"3\", \"country\" : \"test\", \"city\" : \"test\", \"name\" : \"test\", \"Public Exchange\" : \"test\", \"Sector\" : \"test\", \"Industries\" : \"test\", \"Practice Areas\" : \"test\", \"Reporting Period\" : \"test\", \"State\" : \"test\", \"Region\" : \"test\", \"founded\" : \"1989\" }";
+        String jsonStr =  "{ \"url\" : \"www.test.com\", \"submittedby\" : \"\", \"privateorpublic\" : \"\", \"ftes\" : \"34\", \"capitalraised\" : \"0\", \"country\" : \"\", \"city\" : \"\", \"name\" : \"\", \"Public Exchange\" : \"\", \"Sector\" : \"\", \"Industries\" : \"\", \"Practice Areas\" : \"\", \"Reporting Period\" : \"\", \"State\" : \"\", \"Region\" : \"\", \"founded\" : \"1234\" }";
         System.out.println(""+CompanyManager.insertCompanyManager(jsonStr));
     }
 
