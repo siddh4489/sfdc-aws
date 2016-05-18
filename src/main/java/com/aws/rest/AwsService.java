@@ -6,6 +6,7 @@
 package com.aws.rest;
 
 import com.aws.manager.CompanyManager;
+import java.sql.SQLException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
@@ -24,14 +25,7 @@ public class AwsService {
     @POST
     @Path("/company")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createCompany(@HeaderParam("cmpstr") String cmpstr) throws ParseException {
-        return Response.status(201).entity(CompanyManager.insertCompanyManager(cmpstr)).build();
-    }
-
-    @POST
-    @Path("/test")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response test(@HeaderParam("cmpstr") String cmpstr) throws ParseException {
+    public Response createCompany(@HeaderParam("cmpstr") String cmpstr) throws ParseException, SQLException, ClassNotFoundException {
         return Response.status(201).entity(CompanyManager.insertCompanyManager(cmpstr)).build();
     }
 

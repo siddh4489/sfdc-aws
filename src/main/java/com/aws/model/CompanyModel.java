@@ -11,7 +11,16 @@ package com.aws.model;
  */
 public class CompanyModel {
 
+    public String getSfdcId() {
+        return sfdcId;
+    }
+
+    public void setSfdcId(String sfdcId) {
+        this.sfdcId = sfdcId;
+    }
+
     public String url;
+    public String sfdcId;
     public String submittedby;
     public String privateorpublic;
     public String ftes;

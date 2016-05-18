@@ -21,9 +21,7 @@ public class AwsConnection {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection(
-                    Properties.getProperties().getHosturl(), Properties.getProperties().getUsername(),
-                    Properties.getProperties().getPassword());
+            connection = DriverManager.getConnection("jdbc:postgresql://financial.caie2001o45n.us-west-2.rds.amazonaws.com:5432/financial","financial","ERL6neX8e8fZHFabrnUN");
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -8,6 +8,7 @@ package com.aws.manager;
 
 import com.aws.datamanager.CompanyDataManager;
 import com.aws.model.CompanyModel;
+import java.sql.SQLException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -18,10 +19,11 @@ import org.json.simple.parser.ParseException;
  */
 public class CompanyManager {
 
-    public static String insertCompanyManager(String companyData) throws ParseException {
+    public static String insertCompanyManager(String companyData) throws ParseException, SQLException, ClassNotFoundException {
         CompanyModel comObj=new CompanyModel();
         JSONParser parser = new JSONParser();
         JSONObject json = (JSONObject) parser.parse(companyData);
+        comObj.setSfdcId(((String) json.get("sfdcid")!=null?(String) json.get("sfdcid"):""));
         comObj.setUrl(((String) json.get("url")!=null?(String) json.get("url"):""));
         comObj.setSubmittedby(((String) json.get("submittedby")!=null?(String) json.get("submittedby"):""));
         comObj.setPrivateorpublic(((String)json.get("privateorpublic")!=null?(String)json.get("privateorpublic"):""));
@@ -38,7 +40,7 @@ public class CompanyManager {
         comObj.setState(((String)json.get("State")!=null?(String)json.get("State"):""));
         comObj.setRegion(((String)json.get("Region")!=null?(String)json.get("Region"):""));
         comObj.setFounded(((String)json.get("founded")!=null?(String)json.get("founded"):"0"));
-        return CompanyDataManager.insertCompanyDataManager(comObj);
+        return CompanyDataManager.companyProcessBypass(comObj);
     }
 
 }
