@@ -94,8 +94,8 @@ public class CompanyDataManager {
             ps.setString(1, cmodel.getUrl());
             ps.setString(2, cmodel.getSubmittedby());
             ps.setString(3, cmodel.getPrivateorpublic());
-            ps.setString(4, cmodel.getFtes());
-            ps.setString(5, cmodel.getCapitalraised());
+            ps.setInt(4, Integer.valueOf(cmodel.getFtes()));
+            ps.setInt(5, Integer.valueOf(cmodel.getCapitalraised()));
             ps.setString(6, cmodel.getCountry());
             ps.setString(7, cmodel.getCity());
             ps.setString(8, cmodel.getName());
@@ -106,7 +106,7 @@ public class CompanyDataManager {
             ps.setString(13, cmodel.getReporting_period());
             ps.setString(14, cmodel.getState());
             ps.setString(15, cmodel.getRegion());
-            ps.setString(16, cmodel.getFounded());
+            ps.setInt(16, Integer.valueOf(cmodel.getFounded()));
             ps.setString(17, cmodel.getSfdcId());
             ps.executeUpdate();
             ps.close();
