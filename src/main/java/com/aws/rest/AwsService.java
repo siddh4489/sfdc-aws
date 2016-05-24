@@ -28,5 +28,12 @@ public class AwsService {
     public Response createCompany(@HeaderParam("cmpstr") String cmpstr) throws ParseException, SQLException, ClassNotFoundException {
         return Response.status(201).entity(CompanyManager.insertCompanyManager(cmpstr)).build();
     }
+    
+    @POST
+    @Path("/financial")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createFinancialData(@HeaderParam("finstr") String finstr) throws ParseException, SQLException, ClassNotFoundException {
+        return Response.status(201).entity(CompanyManager.insertFinancialRecManager(finstr)).build();
+    }
 
 }

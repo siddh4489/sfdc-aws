@@ -8,7 +8,11 @@ package com.aws.manager;
 
 import com.aws.datamanager.CompanyDataManager;
 import com.aws.model.CompanyModel;
+import com.aws.model.Financial;
+import com.aws.model.FinancialModel;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -41,6 +45,24 @@ public class CompanyManager {
         comObj.setRegion(((String)json.get("Region")!=null?(String)json.get("Region"):""));
         comObj.setFounded(((String)json.get("founded")!=null?(String)json.get("founded"):"0"));
         return CompanyDataManager.companyProcessBypass(comObj);
+    }
+    public static String insertFinancialRecManager(String finData) throws ParseException, SQLException, ClassNotFoundException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(finData);
+        
+        FinancialModel finObj = new FinancialModel();
+        Financial fobj = new Financial();
+        List<Financial> f = new ArrayList<Financial>();
+        f.add(fobj);
+        finObj.setFinlst(f);
+        finObj.setFinlst(null);
+        //FinancialModel.financial finData = new FinancialModel.financial();
+        
+        
+        
+       
+        
+        return "";
     }
 
 }
