@@ -55,6 +55,7 @@ public class CompanyManager {
         Financial fobj = new Financial();
         for (int i = 0; i < 8; i++) {
                 fobj = new Financial();
+                fobj.setSfid((String) json.get("sfid"));
                 fobj.setYear((String) json.get("year_"+i));
                 fobj.setQtr((String) json.get("qtr_"+i));
                 fobj.setRev((String) json.get("rev_"+i));

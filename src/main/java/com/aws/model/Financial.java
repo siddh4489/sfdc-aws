@@ -8,6 +8,15 @@ package com.aws.model;
 public class Financial {
 
     public String year;
+    public String sfid;
+
+    public String getSfid() {
+        return sfid;
+    }
+
+    public void setSfid(String sfid) {
+        this.sfid = sfid;
+    }
 
     public String getYear() {
         return year;
