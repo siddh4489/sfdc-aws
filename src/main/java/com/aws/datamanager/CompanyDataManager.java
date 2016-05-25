@@ -7,6 +7,7 @@ package com.aws.datamanager;
 
 import com.aws.connection.AwsConnection;
 import com.aws.model.CompanyModel;
+import com.aws.model.FinancialModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,6 +76,72 @@ public class CompanyDataManager {
             return sqlex.toString();
         }
         return "Records created successfully";
+
+    }
+    
+    public static String insertFinancialDataManager(FinancialModel fmodel) throws ClassNotFoundException {
+
+        try {
+            Connection conn = AwsConnection.getConnection();
+            Statement stmt = null;
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+            StringBuilder sqlQuery = new StringBuilder();
+            for(int j=0;j<fmodel.getFinlst().size();j++){
+            stmt = conn.createStatement();
+            sqlQuery = new StringBuilder();    
+            System.out.println(j+"---Year----"+fmodel.getFinlst().get(j).year);
+            System.out.println(j+"---Qtr----"+fmodel.getFinlst().get(j).qtr);
+            System.out.println(j+"---rev----"+fmodel.getFinlst().get(j).rev);
+            System.out.println(j+"---cog----"+fmodel.getFinlst().get(j).cog);
+            System.out.println(j+"---gross----"+fmodel.getFinlst().get(j).gross);
+            System.out.println(j+"---cash----"+fmodel.getFinlst().get(j).cash);
+            System.out.println(j+"---inv----"+fmodel.getFinlst().get(j).inv);
+            System.out.println(j+"---rec----"+fmodel.getFinlst().get(j).rec);
+            System.out.println(j+"---fet----"+fmodel.getFinlst().get(j).fet);
+            System.out.println(j+"---ltv----"+fmodel.getFinlst().get(j).ltv);
+            System.out.println(j+"---cac----"+fmodel.getFinlst().get(j).cac);
+            System.out.println(j+"---ltvac----"+fmodel.getFinlst().get(j).ltvac);
+            sqlQuery.append(" INSERT INTO companies (");
+            sqlQuery.append("sfid,url,submittedby,privateorpublic,");
+            sqlQuery.append("ftes,capitalraised,country,");
+            sqlQuery.append("city,name,\"Public Exchange\",");
+            sqlQuery.append("\"Sector\",\"Industries\",\"Practice Areas\",\"Reporting Period\",");
+            sqlQuery.append("\"State\",\"Region\",founded) ");
+            sqlQuery.append("VALUES (");
+            sqlQuery.append("'" + cmodel.getSfdcId() + "',");
+            sqlQuery.append("'" + cmodel.getUrl() + "',");
+            sqlQuery.append("'" + cmodel.getSubmittedby() + "',");
+            sqlQuery.append("'" + cmodel.getPrivateorpublic() + "',");
+            sqlQuery.append(cmodel.getFtes() + ",");
+            sqlQuery.append(cmodel.getCapitalraised() + ",");
+            sqlQuery.append("'" + cmodel.getCountry() + "',");
+            sqlQuery.append("'" + cmodel.getCity() + "',");
+            sqlQuery.append("'" + cmodel.getName() + "',");
+            sqlQuery.append("'" + cmodel.getPublic_exchange() + "',");
+            sqlQuery.append("'" + cmodel.getSector() + "',");
+            sqlQuery.append("'" + cmodel.getIndustries() + "',");
+            sqlQuery.append("'" + cmodel.getPractice_areas() + "',");
+            sqlQuery.append("'" + cmodel.getReporting_period() + "',");
+            sqlQuery.append("'" + cmodel.getState() + "',");
+            sqlQuery.append("'" + cmodel.getRegion() + "',");
+            sqlQuery.append("'" + cmodel.getFounded() + "');");
+            System.out.println("----------------------------------------");
+            stmt.executeUpdate(sqlQuery.toString());
+            stmt.close();
+        }
+
+
+            
+           
+            conn.commit();
+            conn.close();
+
+        } catch (SQLException sqlex) {
+            Logger.getLogger(CompanyDataManager.class.getName()).log(Level.SEVERE, null, sqlex);
+            return sqlex.toString();
+        }
+        return "Financial Data created successfully";
 
     }
 
