@@ -23,8 +23,4 @@ public class FinancialModel {
         this.finlst = finlst;
     }
 
-   
-
-    
-
 }

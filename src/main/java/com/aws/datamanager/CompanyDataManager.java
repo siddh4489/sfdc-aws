@@ -7,7 +7,6 @@ package com.aws.datamanager;
 
 import com.aws.connection.AwsConnection;
 import com.aws.model.CompanyModel;
-import com.aws.model.FinancialModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -76,64 +75,6 @@ public class CompanyDataManager {
             return sqlex.toString();
         }
         return "Records created successfully";
-
-    }
-    
-    public static String insertFinancialDataManager(FinancialModel fmodel) throws ClassNotFoundException {
-
-        try {
-            Connection conn = AwsConnection.getConnection();
-            Statement stmt = null;
-            conn.setAutoCommit(false);
-            stmt = conn.createStatement();
-            StringBuilder sqlQuery = new StringBuilder();
-            for(int j=0;j<fmodel.getFinlst().size();j++){
-            stmt = conn.createStatement();
-            sqlQuery = new StringBuilder();    
-            System.out.println(j+"---Year----"+fmodel.getFinlst().get(j).year);
-            System.out.println(j+"---Qtr----"+fmodel.getFinlst().get(j).qtr);
-            System.out.println(j+"---rev----"+fmodel.getFinlst().get(j).rev);
-            System.out.println(j+"---cog----"+fmodel.getFinlst().get(j).cog);
-            System.out.println(j+"---gross----"+fmodel.getFinlst().get(j).gross);
-            System.out.println(j+"---cash----"+fmodel.getFinlst().get(j).cash);
-            System.out.println(j+"---inv----"+fmodel.getFinlst().get(j).inv);
-            System.out.println(j+"---rec----"+fmodel.getFinlst().get(j).rec);
-            System.out.println(j+"---fet----"+fmodel.getFinlst().get(j).fet);
-            System.out.println(j+"---ltv----"+fmodel.getFinlst().get(j).ltv);
-            System.out.println(j+"---cac----"+fmodel.getFinlst().get(j).cac);
-            System.out.println(j+"---ltvac----"+fmodel.getFinlst().get(j).ltvac);
-            sqlQuery.append("insert into reports (");
-            sqlQuery.append("\"Year\",\"Quarter\",\"Total Revenue Value\",\"Cost of Revenue Value\",");
-            sqlQuery.append("\"Gross Profit Value\",\"Cash & Equivalents Value\",\"Short Term Investments Value\",\"Net Receivables Value\",");
-            sqlQuery.append("\"Revenue per FTE Value\",\"LTV/CAC Value\",sfid) ");
-            sqlQuery.append("VALUES (");
-            sqlQuery.append(fmodel.getFinlst().get(j).year + ",");
-            sqlQuery.append("'" + fmodel.getFinlst().get(j).qtr + "',");
-            sqlQuery.append(fmodel.getFinlst().get(j).rev + ",");
-            sqlQuery.append(fmodel.getFinlst().get(j).cog + ",");
-            sqlQuery.append(fmodel.getFinlst().get(j).gross + ",");
-            sqlQuery.append(fmodel.getFinlst().get(j).cash+ ",");
-            sqlQuery.append(fmodel.getFinlst().get(j).inv + ",");
-            sqlQuery.append(fmodel.getFinlst().get(j).rec+ ",");
-            sqlQuery.append(fmodel.getFinlst().get(j).fet + ",");
-            sqlQuery.append(fmodel.getFinlst().get(j).ltvac+ ",");
-            sqlQuery.append("'" + fmodel.getFinlst().get(j).sfid + "');");
-            System.out.println("----------------------------------------");
-            stmt.executeUpdate(sqlQuery.toString());
-            stmt.close();
-        }
-
-
-            
-           
-            conn.commit();
-            conn.close();
-
-        } catch (SQLException sqlex) {
-            Logger.getLogger(CompanyDataManager.class.getName()).log(Level.SEVERE, null, sqlex);
-            return sqlex.toString();
-        }
-        return "Financial Data created successfully";
 
     }
 
